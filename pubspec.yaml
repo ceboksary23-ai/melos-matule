@@ -1,0 +1,8 @@
+name: matule
+environment:
+  sdk: ">=3.10.4 <4.0.0"
+dev_dependencies:
+  melos: ^7.3.0
+workspace:
+  - apps/app
+  - packages/ui_kit

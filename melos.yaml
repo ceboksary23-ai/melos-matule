@@ -1,0 +1,30 @@
+name: matule
+
+packages:
+  - apps/**
+  - packages/**
+
+scripts:
+  postbootstap:
+    run: melos exec -- flutter pub get
+    description: Получение зависимостей во всех пакетах после bootstrap
+  clean:
+    run: flutter clean
+    description: Очистка пакетов
+
+  test:
+    run: melos exec -- flutter test
+    description: Запуск тестов во всех пакетах
+
+  analyze:
+    run: melos exec -- flutter analyze
+    description: Анализ кода во всех пакетах
+  
+  format:
+    run: melos exec -- dart format
+    description: Форматирование кода во всех пакетах
+
+  get:
+    run: melos exec -- flutter pub get
+    description: Получение зависимостей во всех пакетах
+
