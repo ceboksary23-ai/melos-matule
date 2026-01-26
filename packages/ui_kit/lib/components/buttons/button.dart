@@ -42,7 +42,7 @@ class _ButtonState extends State<Button> {
         borderColor = AppColors.accent;
         break;
       case AppButtonStyles.tetriary:
-        fontColor = AppColors.description;
+        fontColor = AppColors.black;
         backgroundColor = AppColors.inputBg;
         borderColor = AppColors.cardStroke;
         break;
@@ -63,10 +63,12 @@ class _ButtonState extends State<Button> {
         child: Center(
           child: Text(
             widget.text,
+            overflow: TextOverflow.ellipsis,
             style: GoogleFonts.robotoFlex(
               fontSize: 17,
               fontWeight: FontWeight.w600,
               color: fontColor,
+              
             ),
           ),
         ),

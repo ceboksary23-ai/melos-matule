@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:ui_kit/components/buttons/button.dart';
+import 'package:ui_kit/components/buttons/cart.dart';
 import 'package:ui_kit/components/buttons/chips.dart';
 void main() {
   runApp(
@@ -17,10 +19,64 @@ class MyHome extends StatelessWidget {
     final filter = context.watch<FilterProvider>().selectedFilter;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
+      spacing: 10,
       children: [
         Chips(list: const ["Все", "Мужчинам", "Женщинам"]),
         const SizedBox(height: 20),
         Text("Выбрано: $filter"),
+        Cart(
+        label: "В корзину",
+        price: 500,
+        onPressed: () {
+          print("Cart Button Pressed!");
+        }
+        ),
+        Text("Big Buttons"),
+        Button(
+          text: "Подтвердить", 
+          style: AppButtonStyles.primary, 
+          onPressed: () => print("Clicked!") 
+        ),
+        Button(
+          text: "Подтвердить", 
+          style: AppButtonStyles.inactive, 
+          onPressed: () => print("Clicked!") 
+        ),
+        Button(
+          text: "Подтвердить", 
+          style: AppButtonStyles.secondary, 
+          onPressed: () => print("Clicked!") 
+        ),
+        Button(
+          text: "Подтвердить", 
+          style: AppButtonStyles.tetriary, 
+          onPressed: () => print("Clicked!") 
+        ),
+        Text("Small Buttons"),
+        Button(
+          text: "Добавить", 
+          style: AppButtonStyles.primary, 
+          isSmall: true,
+          onPressed: () => print("Clicked!") 
+        ),
+        Button(
+          text: "Убрать", 
+          style: AppButtonStyles.secondary, 
+          isSmall: true,
+          onPressed: () => print("Clicked!") 
+        ),
+        Button(
+          text: "Добавить", 
+          style: AppButtonStyles.inactive, 
+          isSmall: true,
+          onPressed: () => print("Clicked!") 
+        ),
+        Button(
+          text: "Подтвердить", 
+          style: AppButtonStyles.tetriary, 
+          isSmall: true,
+          onPressed: () => print("Clicked!") 
+        ),
       ],
     );
   }
