@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:ui_kit/components/buttons/button.dart';
 import 'package:ui_kit/components/buttons/cart.dart';
 import 'package:ui_kit/components/buttons/chips.dart';
+import 'package:ui_kit/components/buttons/login_buttons.dart';
 void main() {
   runApp(
     ChangeNotifierProvider(
@@ -17,11 +18,13 @@ class MyHome extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final filter = context.watch<FilterProvider>().selectedFilter;
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      spacing: 10,
-      children: [
-        Chips(list: const ["Все", "Мужчинам", "Женщинам"]),
+    return Scaffold(
+      body: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          spacing: 10,
+          children: [
+             Chips(list: const ["Все", "Мужчинам", "Женщинам"]),
         const SizedBox(height: 20),
         Text("Выбрано: $filter"),
         Cart(
@@ -77,7 +80,17 @@ class MyHome extends StatelessWidget {
           isSmall: true,
           onPressed: () => print("Clicked!") 
         ),
-      ],
+        LoginButtons(
+          text: "Войти с VK", 
+          style: LoginButtonStyle.vk
+        ),
+        LoginButtons(
+          text: "Войти с Yandex", 
+          style: LoginButtonStyle.yandex
+        )
+          ],
+        ),
+      ),
     );
   }
 }
