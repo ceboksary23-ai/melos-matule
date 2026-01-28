@@ -4,12 +4,19 @@ import 'package:ui_kit/components/buttons/button.dart';
 import 'package:ui_kit/components/buttons/cart.dart';
 import 'package:ui_kit/components/buttons/chips.dart';
 import 'package:ui_kit/components/buttons/login_buttons.dart';
+import 'package:ui_kit/components/search.dart';
 void main() {
   runApp(
-    ChangeNotifierProvider(
-      create: (_) => FilterProvider(),
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => FilterProvider()),
+        ChangeNotifierProvider(create: (_) => SearchProvider()),
+      ],
+      // ВОТ ЭТОГО НЕ ХВАТАЛО:
       child: const MaterialApp(
-        home: Scaffold(body: Center(child: MyHome()))),
+        debugShowCheckedModeBanner: false,
+        home: MyHome(), // Теперь MyHome будет видеть оба провайдера
+      ),
     ),
   );
 }
@@ -87,6 +94,13 @@ class MyHome extends StatelessWidget {
         LoginButtons(
           text: "Войти с Yandex", 
           style: LoginButtonStyle.yandex
+        ),
+        Text("Инпут на поху"),
+        SearchField(
+          placeholder: "Пласехолдир",
+          onSearch: () {
+            
+          }, 
         )
           ],
         ),
